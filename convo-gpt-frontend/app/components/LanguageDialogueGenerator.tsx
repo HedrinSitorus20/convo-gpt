@@ -39,8 +39,10 @@ export default function Component() {
 
   const typeWriter = (text: string, index = 0) => {
     if (index < text.length) {
-      setGeneratedScript((prev) => prev + text.charAt(index))
-      setTimeout(() => typeWriter(text, index + 1), 50)
+      const chunkSize = 5 // Add 5 characters at a time
+      const end = Math.min(index + chunkSize, text.length)
+      setGeneratedScript((prev) => prev + text.slice(index, end))
+      setTimeout(() => typeWriter(text, end), 50)
     } else {
       setIsGenerating(false)
     }
@@ -54,7 +56,7 @@ export default function Component() {
     <div className="min-h-screen bg-background p-4 md:p-8">
       <h1 className="text-3xl font-bold mb-6 text-center"> Convo-GPT</h1>
       <h2 className="text-xl font-semibold mb-4 text-center">Learn language better using AI-generated dialogue script in any language!</h2>
-      <div className="max-w-4xl mx-auto grid gap-8 md:grid-cols-2">
+      <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-[1fr,2fr]">
         <div className="space-y-4">
           <Textarea
             placeholder="Enter the theme for your dialogue..."
