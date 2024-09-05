@@ -11,9 +11,9 @@ Currently still only available on local (mainly because no money to pay API(I'm 
 ## How to install
 
 1. Clone repository
-  ```
-  git clone https://github.com/sultanfsn/convo-gpt.git
-  ```
+   ```
+   git clone https://github.com/sultanfsn/convo-gpt.git
+   ```
 2. Install requrements
    ```
    pip install openai
